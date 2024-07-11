@@ -1,0 +1,23 @@
+{
+  "id": "5fcf5840c7fda1001a1be27b",
+  "data": {
+    "name": "Shweta",
+    "lastname": "Nanda",
+    "gender": "female",
+    "dob": null
+  },
+  "_parents": [],
+  "_children": [
+    {
+      "id": "5fcf5840c7fda1001a1be27b",
+      "data": {
+        "name": "Shweta",
+        "lastname": "Nanda",
+        "gender": "female",
+        "dob": null
+      },
+      "_children": [],
+      "_spouses": []
+    }
+  ]
+}

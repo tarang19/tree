@@ -1,0 +1,357 @@
+{
+  "id": "5fcf47a6c7fda1001a1be221",
+  "data": {
+    "name": "Randheer",
+    "lastname": "Kappor",
+    "gender": "male",
+    "dob": "2020-12-08T00:00:00.000Z"
+  },
+  "_parents": [
+    // {
+    //   "id": "5fcf4896c7fda1001a1be22d",
+    //   "data": {
+    //     "name": "Raj",
+    //     "lastname": "Kapoor",
+    //     "gender": "male",
+    //     "dob": null
+    //   },
+    //   "_parents": [
+    //     {
+    //       "id": "5fcf4febc7fda1001a1be259",
+    //       "data": {
+    //         "name": "Prithviraj",
+    //         "lastname": "Kapoor",
+    //         "gender": "male",
+    //         "dob": null
+    //       },
+    //       "_parents": []
+    //     },
+    //     {
+    //       "id": "5fcf503bc7fda1001a1be25d",
+    //       "data": {
+    //         "name": "Ramsarnu",
+    //         "lastname": "Kapoor",
+    //         "gender": "female",
+    //         "dob": null
+    //       },
+    //       "_parents": []
+    //     }
+    //   ]
+    // },
+    // {
+    //   "id": "5fcf48d6c7fda1001a1be231",
+    //   "data": {
+    //     "name": "Krishana",
+    //     "lastname": "Kapoor",
+    //     "gender": "female",
+    //     "dob": null
+    //   },
+    //   "_parents": []
+    // }
+  ],
+  "_children": [
+    {
+      "id": "5fcf47a6c7fda1001a1be221",
+      "data": {
+        "name": "Randheer",
+        "lastname": "Kappor",
+        "gender": "male",
+        "dob": "2020-12-08T00:00:00.000Z"
+      },
+      "_children": [
+        {
+          "id": "5fcf4817c7fda1001a1be225",
+          "data": {
+            "name": "Karisma",
+            "lastname": "Kapoor",
+            "gender": "female",
+            "dob": "2020-12-08T00:00:00.000Z"
+          },
+          "_children": [
+            {
+              "id": "5fcf50d5c7fda1001a1be25f",
+              "data": {
+                "name": "Samaira",
+                "lastname": "Kapoor",
+                "gender": "female",
+                "dob": null
+              },
+              "_children": []
+            }
+          ],
+          "_spouses": [
+            {
+              "id": "5fcf4862c7fda1001a1be229",
+              "data": {
+                "name": "Sanjay",
+                "lastname": "Kapoor",
+                "gender": "male",
+                "dob": null,
+                "externalTreeId": "5fcf4862c7fda1001a1be229"
+              },
+              "_children": [
+                {
+                  "id": "5fcf5115c7fda1001a1be261",
+                  "data": {
+                    "name": "Kiaan",
+                    "lastname": "Kapoor",
+                    "gender": "male",
+                    "dob": null
+                  },
+                  "_children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5fcf483ec7fda1001a1be227",
+          "data": {
+            "name": "Kareena",
+            "lastname": "Kapoor",
+            "gender": "female",
+            "dob": "2020-12-08T00:00:00.000Z"
+          },
+          "_children": [
+            {
+              "id": "5fcf5155c7fda1001a1be263",
+              "data": {
+                "name": "Taimur",
+                "lastname": "Khan",
+                "gender": "male",
+                "dob": null
+              },
+              "_children": []
+            }
+          ],
+          "_spouses": [
+            {
+              "id": "5fcf4879c7fda1001a1be22b",
+              "data": {
+                "name": "SaifAli",
+                "lastname": "Khan",
+                "gender": "male",
+                "dob": null,
+                "externalTreeId": "5fcf4879c7fda1001a1be22b"
+              },
+              "_children": []
+            }
+          ]
+        }
+      ],
+      "_spouses": [
+        {
+          "id": "5fcf47cfc7fda1001a1be223",
+          "data": {
+            "name": "Babita",
+            "lastname": "Kapoor",
+            "gender": "female",
+            "dob": "2020-12-08T00:00:00.000Z",
+            "externalTreeId": "5fcf47cfc7fda1001a1be223"
+          },
+          "_children": []
+        }
+      ]
+    },
+    {
+      "id": "5fcf4908c7fda1001a1be233",
+      "data": {
+        "name": "Rishi",
+        "lastname": "Kapoor",
+        "gender": "male",
+        "dob": null
+      },
+      "_children": [
+        {
+          "id": "5fcf5582c7fda1001a1be26f",
+          "data": {
+            "name": "Ridhima",
+            "lastname": "Sahni",
+            "gender": "female",
+            "dob": null
+          },
+          "_children": [
+            {
+              "id": "5fcf5618c7fda1001a1be275",
+              "data": {
+                "name": "Samara",
+                "lastname": "Sahni",
+                "gender": "female",
+                "dob": null
+              },
+              "_children": []
+            }
+          ],
+          "_spouses": [
+            {
+              "id": "5fcf55f6c7fda1001a1be273",
+              "data": {
+                "name": "Bharat",
+                "lastname": "Sahni",
+                "gender": "male",
+                "dob": null,
+                "externalTreeId": "5fcf55f6c7fda1001a1be273"
+              },
+              "_children": []
+            }
+          ]
+        },
+        {
+          "id": "5fcf55a4c7fda1001a1be271",
+          "data": {
+            "name": "Ranbir",
+            "lastname": "Kapoor",
+            "gender": "male",
+            "dob": null
+          },
+          "_children": []
+        }
+      ],
+      "_spouses": [
+        {
+          "id": "5fcf4926c7fda1001a1be235",
+          "data": {
+            "name": "Nitu",
+            "lastname": "Kapoor",
+            "gender": "female",
+            "dob": null,
+            "externalTreeId": "5fcf4926c7fda1001a1be235"
+          },
+          "_children": []
+        }
+      ]
+    },
+    {
+      "id": "5fcf4a00c7fda1001a1be23b",
+      "data": {
+        "name": "Ritu",
+        "lastname": "Kapoor",
+        "gender": "female",
+        "dob": null
+      },
+      "_children": [
+        {
+          "id": "5fcf4a89c7fda1001a1be23f",
+          "data": {
+            "name": "Nikhil",
+            "lastname": "Nanda",
+            "gender": "male",
+            "dob": null
+          },
+          "_children": [
+            {
+              "id": "5fcf5879c7fda1001a1be27d",
+              "data": {
+                "name": "Agastya",
+                "lastname": "Nanda",
+                "gender": "male",
+                "dob": null
+              },
+              "_children": []
+            },
+            {
+              "id": "5fcf589fc7fda1001a1be27f",
+              "data": {
+                "name": "Navya Naveli",
+                "lastname": "Nanda",
+                "gender": "female",
+                "dob": null
+              },
+              "_children": []
+            }
+          ],
+          "_spouses": [
+            {
+              "id": "5fcf5840c7fda1001a1be27b",
+              "data": {
+                "name": "Shweta",
+                "lastname": "Nanda",
+                "gender": "female",
+                "dob": null,
+                "externalTreeId": "5fcf5840c7fda1001a1be27b"
+              },
+              "_children": []
+            }
+          ]
+        },
+        {
+          "id": "5fcf4ab4c7fda1001a1be241",
+          "data": {
+            "name": "Natasha",
+            "lastname": "Nanda",
+            "gender": "female",
+            "dob": null
+          },
+          "_children": []
+        }
+      ],
+      "_spouses": [
+        {
+          "id": "5fcf4a4fc7fda1001a1be23d",
+          "data": {
+            "name": "Ranjan",
+            "lastname": "Nanda",
+            "gender": "male",
+            "dob": null,
+            "externalTreeId": "5fcf4a4fc7fda1001a1be23d"
+          },
+          "_children": []
+        }
+      ]
+    },
+    {
+      "id": "5fcf4b15c7fda1001a1be245",
+      "data": {
+        "name": "Reema",
+        "lastname": "Kapoor",
+        "gender": "female",
+        "dob": null
+      },
+      "_children": [
+        {
+          "id": "5fcf5c40c7fda1001a1be291",
+          "data": {
+            "name": "Aadar",
+            "lastname": "Jain",
+            "gender": "male",
+            "dob": null
+          },
+          "_children": []
+        },
+        {
+          "id": "5fcf5c64c7fda1001a1be293",
+          "data": {
+            "name": "armaan",
+            "lastname": "Jain",
+            "gender": "male",
+            "dob": null
+          },
+          "_children": []
+        }
+      ],
+      "_spouses": [
+        {
+          "id": "5fcf5b34c7fda1001a1be283",
+          "data": {
+            "name": "Mohit",
+            "lastname": "Jain",
+            "gender": "male",
+            "dob": null,
+            "externalTreeId": "5fcf5b34c7fda1001a1be283"
+          },
+          "_children": []
+        }
+      ]
+    },
+    {
+      "id": "5fcf4f1dc7fda1001a1be257",
+      "data": {
+        "name": "Rajiv",
+        "lastname": "Kapoor",
+        "gender": "male",
+        "dob": null
+      },
+      "_children": []
+    }
+  ]
+}

@@ -1,0 +1,738 @@
+// ----------------------------------------
+// - app variables
+// ----------------------------------------
+
+@import "variables";
+
+// ----------------------------------------
+// - app mixins
+// ----------------------------------------
+
+@import "mixins";
+
+// ----------------------------------------
+// - app body
+// ----------------------------------------
+
+html, body {
+
+	background: $clr-light;
+	color: $clr-light;
+	font-family: $font;
+	line-height: $lh-r;
+	font-weight: $font-regular;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../dist/images/bl-bg.jpg');
+}
+
+
+// ----------------------------------------
+// - tippy template
+// ----------------------------------------
+
+.tippy-box[data-theme~='bloodline'] {
+  background-color: lighten( $clr-light, 20% );
+}
+
+.tippy-box[data-theme~='bloodline'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: lighten( $clr-light, 20% );
+}
+.tippy-box[data-theme~='bloodline'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: lighten( $clr-light, 20% );
+}
+.tippy-box[data-theme~='bloodline'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: lighten( $clr-light, 20% );
+}
+.tippy-box[data-theme~='bloodline'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: lighten( $clr-light, 20% );
+}
+
+.tippy-box {
+
+	padding-top: $base;
+	padding-bottom: $base;
+	-webkit-box-shadow: 0 $base * .5 $base * 6 0 lighten( $clr-dark, 40% );
+	box-shadow: 0 $base * .5 $base * 6 0 lighten( $clr-dark, 40% );
+	text-align: center;
+}
+
+#bl-template {
+
+	width: 200px;
+	display: none;
+	background-color: lighten( $clr-light, 20% );
+
+	// links and icons
+	a {
+
+		display: inline-block;
+		position: relative;
+		padding-left: $base * .7;
+		padding-right: $base * .7;
+		color: darken( $clr-light, 30% );
+		-webkit-transition: all .3s ease-in-out;
+		-moz-transition: all .3s ease-in-out;
+		-ms-transition: all .3s ease-in-out;
+		-o-transition: all .3s ease-in-out;
+		transition: all .3s ease-in-out;
+
+		&:focus, &:hover {
+			color: darken( $clr-light, 60% );
+		}
+	}
+}
+
+
+// ----------------------------------------
+// - app tree wrapper
+// ----------------------------------------
+
+#app {
+
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	// background-color: $clr-light;
+	// background-size: cover;
+	// background-repeat: no-repeat;
+	// background-position: top bottom;
+	backdrop-filter: blur($base * 2.5); 
+}
+
+#app #wrapper-bloodline {
+
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+}
+
+// ----------------------------------------
+// - app tree zoom controller
+// ----------------------------------------
+
+.modal {
+
+	color: $clr-dark;
+
+	.nav a.nav-link {
+
+		margin-bottom: $base * 1.2;
+
+		&.active {
+			background-color: $clr-dark;
+		}
+	}
+}
+
+// ----------------------------------------
+// - app tree zoom controller
+// ----------------------------------------
+#app #wrapper-bloodline .controllers {
+
+	position: absolute;
+	display: inline-block;
+	height: auto;
+	padding: $base;
+	background-color: rgba(0,0,0,.1);
+	left: 2%;
+	bottom: 4%;
+	z-index: 1;
+	-webkit-border-radius: $base * .2;
+	border-radius: $base * .2;
+	//border: 1px solid lighten($clr-dark, 5%);
+}
+
+// ----------------------------------------
+// - app tree parent
+// ----------------------------------------
+
+#app #wrapper-bloodline .parent {
+
+	position: relative;
+	display: block;
+	width: 97%;
+	height: 94%;
+	// border: 1px dashed lighten( $clr-dark, 10% );
+	top: 3%;
+	left: 1.5%;
+}
+
+// ----------------------------------------
+// - app tree person
+// ----------------------------------------
+
+#app #wrapper-bloodline .ancestor, 
+#app #wrapper-bloodline .descendant,
+#app #wrapper-bloodline .descendant .spouse {
+
+	// relation circular
+	div.wrapper-relation-circle {
+
+		display: inline-block;
+		position: absolute;
+		width: 280px;
+		height: 280px;
+		background-color: transparent;
+		-webkit-border-radius: 300px;
+		border-radius: 300px;
+		// border: 1px dashed $clr-dark;
+		top: 50%;
+		left: 50%;
+		margin-top: -140px;
+		margin-left: -140px;
+		z-index: 10;		
+
+		a.relation-circle {
+
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			left: 50%;	
+			//margin-top: -25px;
+			//margin-left: -25px;
+			opacity: 0;		
+			padding: $base * 1.5;
+			width: auto;
+			height: auto;			
+			background-color: $clr-light;
+			color: $clr-dark;		
+			line-height: 1;
+			-webkit-border-radius: $base * 3;
+			border-radius: $base * 3;
+			-webkit-box-shadow: 0 0 $base * .8 0 darken( $clr-light, 25% );
+			box-shadow: 0 0 $base * .8 0 darken( $clr-light, 25% );
+			-webkit-transition: all .4s cubic-bezier(0.85, 0, 0.15, 1);
+			-moz-transition: all .4s cubic-bezier(0.85, 0, 0.15, 1);
+			-ms-transition: all .4s cubic-bezier(0.85, 0, 0.15, 1);
+			-o-transition: all .4s cubic-bezier(0.85, 0, 0.15, 1);
+			transition: all .4s cubic-bezier(0.85, 0, 0.15, 1);
+
+			img {
+
+				width: 40px;
+				height: 40px;
+				filter: gray; /* IE5+ */
+      			-webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome Canary */
+			}
+
+			&:hover {
+
+				background-color: lighten( $clr-light, 30% );
+
+				img {
+					
+					filter: none; /* IE5+ */
+	      			-webkit-filter: grayscale(0); /* Webkit Nightlies & Chrome Canary */
+				}
+			}
+		}
+	}
+
+	//backdrop-filter: blur($base * 4.5); 
+
+	&.orientation-potrait {
+
+		position: absolute;
+		display: inline-block;
+		width: 150px;
+		height: auto;	
+		top: 0;
+		left: 0;
+		background-color: transparent;
+	}	
+
+	&.orientation-landscape {
+
+		position: absolute;
+		display: flex;
+		width: auto;
+		height: auto;	
+		top: 0;
+		left: 0;
+		background-color: transparent;
+	}	
+
+	&.orientation-landscape a.external-tree {
+
+		position: absolute;
+		display: inline-block;
+		width: $base * 1.1;
+		height: $base * 2.5;		
+		margin-left: -($base * 1.1);
+		top: 5%;
+		right: -($base * 1.1);
+
+		span.card-connector, span.node-connector {
+
+			display: inline-block;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			background-color: darken( $clr-light, 20% );
+	
+		}
+
+		span.card-connector {
+			left: 0;
+			top: 50%;			
+		}
+
+		span.node-connector {
+
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 2px;			
+		}
+
+		&::before, &::after {
+
+			content: '';
+			position: absolute;			
+			right: -50%;
+			margin-right: $base * .2;
+			width: $base * .8;
+			height: $base * .8;			
+			z-index: 1;
+			-webkit-border-radius: $base * 2.15;
+			border-radius: $base * 2.15;
+		}
+
+		&::before {
+
+			background-color: $clr-male;
+			top: 0;
+		}
+
+		&::after {
+
+			background-color: $clr-female;
+			bottom: 0;
+		}
+	}
+
+	&.orientation-potrait a.external-tree {
+
+		position: absolute;
+		display: inline-block;
+		width: $base * 1.1;
+		height: $base * 2.5;		
+		margin-left: -($base * 1.1);
+		top: 5%;
+		left: 0;
+
+		span.card-connector, span.node-connector {
+
+			display: inline-block;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			background-color: darken( $clr-light, 20% );
+			top: 0;
+			left: 0;
+		}
+
+		span.card-connector {
+
+			top: 50%;			
+		}
+
+		span.node-connector {
+
+			height: 100%;
+			width: 2px;			
+		}
+
+		&::before, &::after {
+
+			content: '';
+			position: absolute;			
+			left: -50%;
+			margin-left: $base * .2;
+			width: $base * .8;
+			height: $base * .8;			
+			z-index: 1;
+			-webkit-border-radius: $base * 2.15;
+			border-radius: $base * 2.15;
+		}
+
+		&::before {
+
+			background-color: $clr-male;
+			top: 0;
+		}
+
+		&::after {
+
+			background-color: $clr-female;
+			bottom: 0;
+		}
+	}
+
+	-webkit-border-radius: $base * 1.2;
+	border-radius: $base * 1.2;
+
+	-webkit-box-shadow: 0 $base $base * 3.4 0 darken( $clr-light, 20% );
+	box-shadow: 0 $base $base * 3.4 0 darken( $clr-light, 20% );
+
+	// male, female transitions
+	&.male, &.female {
+
+		-webkit-transition: all .3s ease-in-out;
+		-moz-transition: all .3s ease-in-out;
+		-ms-transition: all .3s ease-in-out;
+		-o-transition: all .3s ease-in-out;
+		transition: all .3s ease-in-out;
+	}	
+
+	// male cards
+	&.male { 
+		
+		background-color: transparent;	
+
+		&:hover {
+
+			//background-color: lighten( $clr-male, 35% );
+			//-webkit-box-shadow: 0 0 $base * .5 0 darken( $clr-light, 10% );
+			//box-shadow: 0 0 $base * .5 0 darken( $clr-light, 10% );
+		}	
+	}
+
+	// female cards
+	&.female {	
+
+		background-color: transparent; 
+
+		&:hover {
+
+			//background-color: lighten( $clr-female, 35% );
+			//-webkit-box-shadow: 0 0 $base * .5 0 darken( $clr-light, 10% );
+			//box-shadow: 0 0 $base * .5 0 darken( $clr-light, 10% );
+		}
+	}
+
+	&.male, &.female {
+
+		// spouse connector
+		.connector-spouse {
+
+			display: inline-block;
+			position: absolute;
+			// width: $base;
+			// height: $base;
+			//top: 50%;		
+			//margin-top: -$base * .2;
+			background-color: transparent;
+		}
+
+		// child connector
+		.connector-child {
+
+			display: inline-block;
+			position: absolute;
+			// width: $base * .4;			
+			//top: 50%;		
+			//margin-top: -2px;
+			background-color: darken( $clr-light, 20% );
+		}
+
+		// parent connector
+		.connector-parent-vertical {
+
+			display: inline-block;
+			position: absolute;
+			// width: $base * .4;			
+			// top: 0;	
+			// left: 50%;
+			//margin-left: -$base * .1;				
+			background-color: darken( $clr-light, 20% );		
+		}	
+
+		// parent connector
+		.connector-parent-horizontal {
+
+			display: inline-block;
+			position: absolute;
+			//top: 0;	
+			// height: $base * .4;				
+			background-color: darken( $clr-light, 20% );			
+		}		
+	}
+
+	&.male .connector-spouse { background-color: $clr-male;  }
+	&.female .connector-spouse { background-color: $clr-female;  }
+
+	// root bg
+	&.root {	
+
+		background-color: transparent; 
+
+		// root content
+		.content {
+
+			background-color: darken( $clr-dark, 5% );
+
+			// root name
+			h4.person-name {
+
+				color: lighten( $clr-light, 20% );
+			}
+
+			// actions
+			.actions a.action-edit {
+
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+		}
+		
+
+		&:hover {
+
+			background-color: transparent;
+		}
+	}
+
+	// blank cards
+	&.blank {	
+
+		background-color: transparent !important; 
+		//border: 2px dashed lighten($clr-dark, 15%);
+		min-height: 86px;
+		//outline: 1px dashed lighten($clr-dark, 15%);
+		outline-offset: 0px;
+
+		.content {
+			background-color: transparent !important;
+			//border-top: 2px dashed lighten($clr-dark, 15%);
+		}
+		
+	}
+
+	// deceased 
+	&.deceased {
+
+		// avatar
+		.avatar::after {
+
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: transparent;
+			backdrop-filter: grayscale(1);
+		}
+
+		.content {
+			
+			background-color: lighten( $clr-dark, 35% );
+
+			// title
+			h4.person-name {
+				color: lighten( $clr-light, 10% );
+			}
+
+			// lifespan
+			h6.lifespan {
+				color: lighten( $clr-dark, 65% );
+			}
+
+			// actions
+			.actions a.action-edit {				
+				background-color: lighten( $clr-dark, 10% );
+
+				-webkit-box-shadow: 0 $base * .25 $base * .6 0 lighten( $clr-dark, 15% );
+				box-shadow: 0 $base * .25 $base * .6 0 lighten( $clr-dark, 15% );
+
+				&:hover { 
+					text-decoration: none;
+					-webkit-box-shadow: 0 0 $base * .15 0 lighten( $clr-dark, 15% );
+					box-shadow: 0 0 $base * .15 0 lighten( $clr-dark, 15% ); 
+				}
+			}
+		}
+	}	
+
+	// avatars
+	.avatar {
+
+		display: block;
+		position: relative;
+		height: $base * 7;
+		-webkit-border-radius: $base * 1.2 $base * 1.2 0 0;
+		border-radius: $base * 1.2 $base * 1.2 0 0;		
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: left 50% top;
+		background-color: transparent;
+		overflow: hidden;
+	}
+
+	&.orientation-landscape .avatar {
+
+		display: inline-block;
+		height: $base * 6;
+		width: $base * 6;
+		background-size: cover;
+		align-self: flex-end;
+
+		-webkit-border-radius: $base * .5 0 0 $base * .5;
+		border-radius: $base * .5 0 0 $base * .5;
+	}
+
+	// &.male .avatar { background-image: url('../dist/images/male-user-avatar.png'); }
+	// &.female .avatar { background-image: url('../dist/images/female-user-avatar.png'); }
+
+	// content
+	.content {
+
+		display: block;
+		position: relative;
+		height: $base * 6;
+		background-color: lighten( $clr-light, 20% );
+
+		-webkit-border-radius: 0 0 $base * 1.2 $base * 1.2;
+		border-radius: 0 0 $base * 1.2 $base * 1.2;
+
+		// person name
+		h4.person-name, h6.lifespan {
+
+			display: block;
+			margin: 0;
+			padding-top: $base * 2;
+			padding-bottom: $base * .5; 
+			padding-left: $base * 1.2;
+			padding-right: $base * 1.2;
+
+			color: lighten( $clr-dark, 10% );
+			text-align: center;
+			font-size: $font-s;
+			font-weight: $font-bold;
+			text-transform: capitalize;
+		}
+
+		// person lifespan
+		h6.lifespan {
+
+			padding-top: 0;
+			font-size: $font-xs;
+			font-weight: $font-bold;	
+			color: lighten( $clr-dark, 35% );		
+		}
+
+		// person actions
+		.actions {
+
+			text-align: center;
+			font-size: $font-s;
+			display: inline-block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin-left: $base;
+
+			a.action-edit {
+				display: inline-block;
+				position: absolute;
+				width: $base * 2.5;
+				height: $base * 2.5;
+				top: 0;
+				left: 0;
+				margin-top: -$base * 1.2;
+				background-color: $clr-accent;
+				padding: $base * .2;
+				cursor: pointer;
+
+				-webkit-transition: all .2s ease-in-out;
+				-moz-transition: all .2s ease-in-out;
+				-ms-transition: all .2s ease-in-out;
+				-o-transition: all .2s ease-in-out;
+				transition: all .2s ease-in-out;
+
+				-webkit-border-radius: $base * 3;
+				border-radius: $base * 3;
+
+				-webkit-box-shadow: 0 $base * .25 $base * .6 0 lighten( $clr-accent, 5% );
+				box-shadow: 0 $base * .25 $base * .6 0 lighten( $clr-accent, 5% );
+
+				&:hover { 
+					text-decoration: none;
+					-webkit-box-shadow: 0 0 $base * .15 0 lighten( $clr-accent, 5% );
+					box-shadow: 0 0 $base * .15 0 lighten( $clr-accent, 5% ); 
+				}
+
+				span {
+					color: $clr-light;
+					font-size: $base * 2;
+					line-height: 1;
+					padding: 0;
+					margin: 0;
+				}
+			}
+		}
+	}
+
+
+	&.orientation-landscape .content {
+
+		display: inline-block;
+		height: auto;
+		width: 150px;
+		max-width: 150px;
+
+		-webkit-border-radius: 0 $base * .5 $base * .5 0;
+		border-radius: 0 $base * .5 $base * .5 0;
+
+		// person name
+		h4.person-name {
+
+			display: block;
+			padding-top: $base * 1.2;
+			padding-bottom: $base * .5; 
+			padding-left: $base * 1.2;
+			padding-right: $base * 1.2;			
+			text-align: left;
+		}
+
+		// person lifespan
+		h6.lifespan {
+
+			text-align: left;
+			padding-top: $base * 0;
+			padding-bottom: $base * .25; 
+			padding-left: $base * 1.2;
+			padding-right: $base * 1.2;			
+		}
+
+		// person actions
+		.actions {
+
+			text-align: left;
+			top: 100%;
+			left: 0;
+			margin-left: -$base * 1.3;		
+
+			a {	
+				display: inline-block;			
+				padding-top: $base * .25;
+				padding-bottom: $base * 0; 
+				padding-left: $base * .78;
+				padding-right: $base * .5;
+			}
+		}
+	}
+
+
+}

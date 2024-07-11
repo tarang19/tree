@@ -1,0 +1,636 @@
+html, body {
+  background: #ECEFF1;
+  color: #ECEFF1;
+  font-family: "Roboto Condensed", sans-serif;
+  line-height: 1.8;
+  font-weight: 400;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../dist/images/bl-bg.jpg");
+}
+
+.tippy-box[data-theme~=bloodline] {
+  background-color: white;
+}
+
+.tippy-box[data-theme~=bloodline][data-placement^=top] > .tippy-arrow::before {
+  border-top-color: white;
+}
+
+.tippy-box[data-theme~=bloodline][data-placement^=bottom] > .tippy-arrow::before {
+  border-bottom-color: white;
+}
+
+.tippy-box[data-theme~=bloodline][data-placement^=left] > .tippy-arrow::before {
+  border-left-color: white;
+}
+
+.tippy-box[data-theme~=bloodline][data-placement^=right] > .tippy-arrow::before {
+  border-right-color: white;
+}
+
+.tippy-box {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  -webkit-box-shadow: 0 7px 84px 0 #819ca9;
+  box-shadow: 0 7px 84px 0 #819ca9;
+  text-align: center;
+}
+
+#bl-template {
+  width: 200px;
+  display: none;
+  background-color: white;
+}
+#bl-template a {
+  display: inline-block;
+  position: relative;
+  padding-left: 9.8px;
+  padding-right: 9.8px;
+  color: #94a5b0;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#bl-template a:focus, #bl-template a:hover {
+  color: #495862;
+}
+
+#app {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  backdrop-filter: blur(35px);
+}
+
+#app #wrapper-bloodline {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  color: #263238;
+}
+.modal .nav a.nav-link {
+  margin-bottom: 16.8px;
+}
+.modal .nav a.nav-link.active {
+  background-color: #263238;
+}
+
+#app #wrapper-bloodline .controllers {
+  position: absolute;
+  display: inline-block;
+  height: auto;
+  padding: 14px;
+  background-color: rgba(0, 0, 0, 0.1);
+  left: 2%;
+  bottom: 4%;
+  z-index: 1;
+  -webkit-border-radius: 2.8px;
+  border-radius: 2.8px;
+}
+
+#app #wrapper-bloodline .parent {
+  position: relative;
+  display: block;
+  width: 97%;
+  height: 94%;
+  top: 3%;
+  left: 1.5%;
+}
+
+#app #wrapper-bloodline .ancestor,
+#app #wrapper-bloodline .descendant,
+#app #wrapper-bloodline .descendant .spouse {
+  -webkit-border-radius: 16.8px;
+  border-radius: 16.8px;
+  -webkit-box-shadow: 0 14px 47.6px 0 #b1bec6;
+  box-shadow: 0 14px 47.6px 0 #b1bec6;
+}
+#app #wrapper-bloodline .ancestor div.wrapper-relation-circle,
+#app #wrapper-bloodline .descendant div.wrapper-relation-circle,
+#app #wrapper-bloodline .descendant .spouse div.wrapper-relation-circle {
+  display: inline-block;
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background-color: transparent;
+  -webkit-border-radius: 300px;
+  border-radius: 300px;
+  top: 50%;
+  left: 50%;
+  margin-top: -140px;
+  margin-left: -140px;
+  z-index: 10;
+}
+#app #wrapper-bloodline .ancestor div.wrapper-relation-circle a.relation-circle,
+#app #wrapper-bloodline .descendant div.wrapper-relation-circle a.relation-circle,
+#app #wrapper-bloodline .descendant .spouse div.wrapper-relation-circle a.relation-circle {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  padding: 21px;
+  width: auto;
+  height: auto;
+  background-color: #ECEFF1;
+  color: #263238;
+  line-height: 1;
+  -webkit-border-radius: 42px;
+  border-radius: 42px;
+  -webkit-box-shadow: 0 0 11.2px 0 #a3b1bb;
+  box-shadow: 0 0 11.2px 0 #a3b1bb;
+  -webkit-transition: all 0.4s cubic-bezier(0.85, 0, 0.15, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.85, 0, 0.15, 1);
+  -ms-transition: all 0.4s cubic-bezier(0.85, 0, 0.15, 1);
+  -o-transition: all 0.4s cubic-bezier(0.85, 0, 0.15, 1);
+  transition: all 0.4s cubic-bezier(0.85, 0, 0.15, 1);
+}
+#app #wrapper-bloodline .ancestor div.wrapper-relation-circle a.relation-circle img,
+#app #wrapper-bloodline .descendant div.wrapper-relation-circle a.relation-circle img,
+#app #wrapper-bloodline .descendant .spouse div.wrapper-relation-circle a.relation-circle img {
+  width: 40px;
+  height: 40px;
+  filter: gray;
+  /* IE5+ */
+  -webkit-filter: grayscale(1);
+  /* Webkit Nightlies & Chrome Canary */
+}
+#app #wrapper-bloodline .ancestor div.wrapper-relation-circle a.relation-circle:hover,
+#app #wrapper-bloodline .descendant div.wrapper-relation-circle a.relation-circle:hover,
+#app #wrapper-bloodline .descendant .spouse div.wrapper-relation-circle a.relation-circle:hover {
+  background-color: white;
+}
+#app #wrapper-bloodline .ancestor div.wrapper-relation-circle a.relation-circle:hover img,
+#app #wrapper-bloodline .descendant div.wrapper-relation-circle a.relation-circle:hover img,
+#app #wrapper-bloodline .descendant .spouse div.wrapper-relation-circle a.relation-circle:hover img {
+  filter: none;
+  /* IE5+ */
+  -webkit-filter: grayscale(0);
+  /* Webkit Nightlies & Chrome Canary */
+}
+#app #wrapper-bloodline .ancestor.orientation-potrait,
+#app #wrapper-bloodline .descendant.orientation-potrait,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait {
+  position: absolute;
+  display: inline-block;
+  width: 150px;
+  height: auto;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape,
+#app #wrapper-bloodline .descendant.orientation-landscape,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape {
+  position: absolute;
+  display: flex;
+  width: auto;
+  height: auto;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape a.external-tree,
+#app #wrapper-bloodline .descendant.orientation-landscape a.external-tree,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape a.external-tree {
+  position: absolute;
+  display: inline-block;
+  width: 15.4px;
+  height: 35px;
+  margin-left: -15.4px;
+  top: 5%;
+  right: -15.4px;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape a.external-tree span.card-connector, #app #wrapper-bloodline .ancestor.orientation-landscape a.external-tree span.node-connector,
+#app #wrapper-bloodline .descendant.orientation-landscape a.external-tree span.card-connector,
+#app #wrapper-bloodline .descendant.orientation-landscape a.external-tree span.node-connector,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape a.external-tree span.card-connector,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape a.external-tree span.node-connector {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #b1bec6;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape a.external-tree span.card-connector,
+#app #wrapper-bloodline .descendant.orientation-landscape a.external-tree span.card-connector,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape a.external-tree span.card-connector {
+  left: 0;
+  top: 50%;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape a.external-tree span.node-connector,
+#app #wrapper-bloodline .descendant.orientation-landscape a.external-tree span.node-connector,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape a.external-tree span.node-connector {
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 2px;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape a.external-tree::before, #app #wrapper-bloodline .ancestor.orientation-landscape a.external-tree::after,
+#app #wrapper-bloodline .descendant.orientation-landscape a.external-tree::before,
+#app #wrapper-bloodline .descendant.orientation-landscape a.external-tree::after,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape a.external-tree::before,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape a.external-tree::after {
+  content: "";
+  position: absolute;
+  right: -50%;
+  margin-right: 2.8px;
+  width: 11.2px;
+  height: 11.2px;
+  z-index: 1;
+  -webkit-border-radius: 30.1px;
+  border-radius: 30.1px;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape a.external-tree::before,
+#app #wrapper-bloodline .descendant.orientation-landscape a.external-tree::before,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape a.external-tree::before {
+  background-color: #5B2A86;
+  top: 0;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape a.external-tree::after,
+#app #wrapper-bloodline .descendant.orientation-landscape a.external-tree::after,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape a.external-tree::after {
+  background-color: #F46036;
+  bottom: 0;
+}
+#app #wrapper-bloodline .ancestor.orientation-potrait a.external-tree,
+#app #wrapper-bloodline .descendant.orientation-potrait a.external-tree,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait a.external-tree {
+  position: absolute;
+  display: inline-block;
+  width: 15.4px;
+  height: 35px;
+  margin-left: -15.4px;
+  top: 5%;
+  left: 0;
+}
+#app #wrapper-bloodline .ancestor.orientation-potrait a.external-tree span.card-connector, #app #wrapper-bloodline .ancestor.orientation-potrait a.external-tree span.node-connector,
+#app #wrapper-bloodline .descendant.orientation-potrait a.external-tree span.card-connector,
+#app #wrapper-bloodline .descendant.orientation-potrait a.external-tree span.node-connector,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait a.external-tree span.card-connector,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait a.external-tree span.node-connector {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #b1bec6;
+  top: 0;
+  left: 0;
+}
+#app #wrapper-bloodline .ancestor.orientation-potrait a.external-tree span.card-connector,
+#app #wrapper-bloodline .descendant.orientation-potrait a.external-tree span.card-connector,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait a.external-tree span.card-connector {
+  top: 50%;
+}
+#app #wrapper-bloodline .ancestor.orientation-potrait a.external-tree span.node-connector,
+#app #wrapper-bloodline .descendant.orientation-potrait a.external-tree span.node-connector,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait a.external-tree span.node-connector {
+  height: 100%;
+  width: 2px;
+}
+#app #wrapper-bloodline .ancestor.orientation-potrait a.external-tree::before, #app #wrapper-bloodline .ancestor.orientation-potrait a.external-tree::after,
+#app #wrapper-bloodline .descendant.orientation-potrait a.external-tree::before,
+#app #wrapper-bloodline .descendant.orientation-potrait a.external-tree::after,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait a.external-tree::before,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait a.external-tree::after {
+  content: "";
+  position: absolute;
+  left: -50%;
+  margin-left: 2.8px;
+  width: 11.2px;
+  height: 11.2px;
+  z-index: 1;
+  -webkit-border-radius: 30.1px;
+  border-radius: 30.1px;
+}
+#app #wrapper-bloodline .ancestor.orientation-potrait a.external-tree::before,
+#app #wrapper-bloodline .descendant.orientation-potrait a.external-tree::before,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait a.external-tree::before {
+  background-color: #5B2A86;
+  top: 0;
+}
+#app #wrapper-bloodline .ancestor.orientation-potrait a.external-tree::after,
+#app #wrapper-bloodline .descendant.orientation-potrait a.external-tree::after,
+#app #wrapper-bloodline .descendant .spouse.orientation-potrait a.external-tree::after {
+  background-color: #F46036;
+  bottom: 0;
+}
+#app #wrapper-bloodline .ancestor.male, #app #wrapper-bloodline .ancestor.female,
+#app #wrapper-bloodline .descendant.male,
+#app #wrapper-bloodline .descendant.female,
+#app #wrapper-bloodline .descendant .spouse.male,
+#app #wrapper-bloodline .descendant .spouse.female {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#app #wrapper-bloodline .ancestor.male,
+#app #wrapper-bloodline .descendant.male,
+#app #wrapper-bloodline .descendant .spouse.male {
+  background-color: transparent;
+}
+#app #wrapper-bloodline .ancestor.female,
+#app #wrapper-bloodline .descendant.female,
+#app #wrapper-bloodline .descendant .spouse.female {
+  background-color: transparent;
+}
+#app #wrapper-bloodline .ancestor.male .connector-spouse, #app #wrapper-bloodline .ancestor.female .connector-spouse,
+#app #wrapper-bloodline .descendant.male .connector-spouse,
+#app #wrapper-bloodline .descendant.female .connector-spouse,
+#app #wrapper-bloodline .descendant .spouse.male .connector-spouse,
+#app #wrapper-bloodline .descendant .spouse.female .connector-spouse {
+  display: inline-block;
+  position: absolute;
+  background-color: transparent;
+}
+#app #wrapper-bloodline .ancestor.male .connector-child, #app #wrapper-bloodline .ancestor.female .connector-child,
+#app #wrapper-bloodline .descendant.male .connector-child,
+#app #wrapper-bloodline .descendant.female .connector-child,
+#app #wrapper-bloodline .descendant .spouse.male .connector-child,
+#app #wrapper-bloodline .descendant .spouse.female .connector-child {
+  display: inline-block;
+  position: absolute;
+  background-color: #b1bec6;
+}
+#app #wrapper-bloodline .ancestor.male .connector-parent-vertical, #app #wrapper-bloodline .ancestor.female .connector-parent-vertical,
+#app #wrapper-bloodline .descendant.male .connector-parent-vertical,
+#app #wrapper-bloodline .descendant.female .connector-parent-vertical,
+#app #wrapper-bloodline .descendant .spouse.male .connector-parent-vertical,
+#app #wrapper-bloodline .descendant .spouse.female .connector-parent-vertical {
+  display: inline-block;
+  position: absolute;
+  background-color: #b1bec6;
+}
+#app #wrapper-bloodline .ancestor.male .connector-parent-horizontal, #app #wrapper-bloodline .ancestor.female .connector-parent-horizontal,
+#app #wrapper-bloodline .descendant.male .connector-parent-horizontal,
+#app #wrapper-bloodline .descendant.female .connector-parent-horizontal,
+#app #wrapper-bloodline .descendant .spouse.male .connector-parent-horizontal,
+#app #wrapper-bloodline .descendant .spouse.female .connector-parent-horizontal {
+  display: inline-block;
+  position: absolute;
+  background-color: #b1bec6;
+}
+#app #wrapper-bloodline .ancestor.male .connector-spouse,
+#app #wrapper-bloodline .descendant.male .connector-spouse,
+#app #wrapper-bloodline .descendant .spouse.male .connector-spouse {
+  background-color: #5B2A86;
+}
+#app #wrapper-bloodline .ancestor.female .connector-spouse,
+#app #wrapper-bloodline .descendant.female .connector-spouse,
+#app #wrapper-bloodline .descendant .spouse.female .connector-spouse {
+  background-color: #F46036;
+}
+#app #wrapper-bloodline .ancestor.root,
+#app #wrapper-bloodline .descendant.root,
+#app #wrapper-bloodline .descendant .spouse.root {
+  background-color: transparent;
+}
+#app #wrapper-bloodline .ancestor.root .content,
+#app #wrapper-bloodline .descendant.root .content,
+#app #wrapper-bloodline .descendant .spouse.root .content {
+  background-color: #1c2429;
+}
+#app #wrapper-bloodline .ancestor.root .content h4.person-name,
+#app #wrapper-bloodline .descendant.root .content h4.person-name,
+#app #wrapper-bloodline .descendant .spouse.root .content h4.person-name {
+  color: white;
+}
+#app #wrapper-bloodline .ancestor.root .content .actions a.action-edit,
+#app #wrapper-bloodline .descendant.root .content .actions a.action-edit,
+#app #wrapper-bloodline .descendant .spouse.root .content .actions a.action-edit {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#app #wrapper-bloodline .ancestor.root:hover,
+#app #wrapper-bloodline .descendant.root:hover,
+#app #wrapper-bloodline .descendant .spouse.root:hover {
+  background-color: transparent;
+}
+#app #wrapper-bloodline .ancestor.blank,
+#app #wrapper-bloodline .descendant.blank,
+#app #wrapper-bloodline .descendant .spouse.blank {
+  background-color: transparent !important;
+  min-height: 86px;
+  outline-offset: 0px;
+}
+#app #wrapper-bloodline .ancestor.blank .content,
+#app #wrapper-bloodline .descendant.blank .content,
+#app #wrapper-bloodline .descendant .spouse.blank .content {
+  background-color: transparent !important;
+}
+#app #wrapper-bloodline .ancestor.deceased .avatar::after,
+#app #wrapper-bloodline .descendant.deceased .avatar::after,
+#app #wrapper-bloodline .descendant .spouse.deceased .avatar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  backdrop-filter: grayscale(1);
+}
+#app #wrapper-bloodline .ancestor.deceased .content,
+#app #wrapper-bloodline .descendant.deceased .content,
+#app #wrapper-bloodline .descendant .spouse.deceased .content {
+  background-color: #72909f;
+}
+#app #wrapper-bloodline .ancestor.deceased .content h4.person-name,
+#app #wrapper-bloodline .descendant.deceased .content h4.person-name,
+#app #wrapper-bloodline .descendant .spouse.deceased .content h4.person-name {
+  color: white;
+}
+#app #wrapper-bloodline .ancestor.deceased .content h6.lifespan,
+#app #wrapper-bloodline .descendant.deceased .content h6.lifespan,
+#app #wrapper-bloodline .descendant .spouse.deceased .content h6.lifespan {
+  color: #cdd7dd;
+}
+#app #wrapper-bloodline .ancestor.deceased .content .actions a.action-edit,
+#app #wrapper-bloodline .descendant.deceased .content .actions a.action-edit,
+#app #wrapper-bloodline .descendant .spouse.deceased .content .actions a.action-edit {
+  background-color: #3b4d56;
+  -webkit-box-shadow: 0 3.5px 8.4px 0 #455b66;
+  box-shadow: 0 3.5px 8.4px 0 #455b66;
+}
+#app #wrapper-bloodline .ancestor.deceased .content .actions a.action-edit:hover,
+#app #wrapper-bloodline .descendant.deceased .content .actions a.action-edit:hover,
+#app #wrapper-bloodline .descendant .spouse.deceased .content .actions a.action-edit:hover {
+  text-decoration: none;
+  -webkit-box-shadow: 0 0 2.1px 0 #455b66;
+  box-shadow: 0 0 2.1px 0 #455b66;
+}
+#app #wrapper-bloodline .ancestor .avatar,
+#app #wrapper-bloodline .descendant .avatar,
+#app #wrapper-bloodline .descendant .spouse .avatar {
+  display: block;
+  position: relative;
+  height: 98px;
+  -webkit-border-radius: 16.8px 16.8px 0 0;
+  border-radius: 16.8px 16.8px 0 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left 50% top;
+  background-color: transparent;
+  overflow: hidden;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape .avatar,
+#app #wrapper-bloodline .descendant.orientation-landscape .avatar,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape .avatar {
+  display: inline-block;
+  height: 84px;
+  width: 84px;
+  background-size: cover;
+  align-self: flex-end;
+  -webkit-border-radius: 7px 0 0 7px;
+  border-radius: 7px 0 0 7px;
+}
+#app #wrapper-bloodline .ancestor .content,
+#app #wrapper-bloodline .descendant .content,
+#app #wrapper-bloodline .descendant .spouse .content {
+  display: block;
+  position: relative;
+  height: 84px;
+  background-color: white;
+  -webkit-border-radius: 0 0 16.8px 16.8px;
+  border-radius: 0 0 16.8px 16.8px;
+}
+#app #wrapper-bloodline .ancestor .content h4.person-name, #app #wrapper-bloodline .ancestor .content h6.lifespan,
+#app #wrapper-bloodline .descendant .content h4.person-name,
+#app #wrapper-bloodline .descendant .content h6.lifespan,
+#app #wrapper-bloodline .descendant .spouse .content h4.person-name,
+#app #wrapper-bloodline .descendant .spouse .content h6.lifespan {
+  display: block;
+  margin: 0;
+  padding-top: 28px;
+  padding-bottom: 7px;
+  padding-left: 16.8px;
+  padding-right: 16.8px;
+  color: #3b4d56;
+  text-align: center;
+  font-size: 13.3px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+#app #wrapper-bloodline .ancestor .content h6.lifespan,
+#app #wrapper-bloodline .descendant .content h6.lifespan,
+#app #wrapper-bloodline .descendant .spouse .content h6.lifespan {
+  padding-top: 0;
+  font-size: 11.9px;
+  font-weight: 700;
+  color: #72909f;
+}
+#app #wrapper-bloodline .ancestor .content .actions,
+#app #wrapper-bloodline .descendant .content .actions,
+#app #wrapper-bloodline .descendant .spouse .content .actions {
+  text-align: center;
+  font-size: 13.3px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 14px;
+}
+#app #wrapper-bloodline .ancestor .content .actions a.action-edit,
+#app #wrapper-bloodline .descendant .content .actions a.action-edit,
+#app #wrapper-bloodline .descendant .spouse .content .actions a.action-edit {
+  display: inline-block;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 0;
+  left: 0;
+  margin-top: -16.8px;
+  background-color: #EF233C;
+  padding: 2.8px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-border-radius: 42px;
+  border-radius: 42px;
+  -webkit-box-shadow: 0 3.5px 8.4px 0 #f13b51;
+  box-shadow: 0 3.5px 8.4px 0 #f13b51;
+}
+#app #wrapper-bloodline .ancestor .content .actions a.action-edit:hover,
+#app #wrapper-bloodline .descendant .content .actions a.action-edit:hover,
+#app #wrapper-bloodline .descendant .spouse .content .actions a.action-edit:hover {
+  text-decoration: none;
+  -webkit-box-shadow: 0 0 2.1px 0 #f13b51;
+  box-shadow: 0 0 2.1px 0 #f13b51;
+}
+#app #wrapper-bloodline .ancestor .content .actions a.action-edit span,
+#app #wrapper-bloodline .descendant .content .actions a.action-edit span,
+#app #wrapper-bloodline .descendant .spouse .content .actions a.action-edit span {
+  color: #ECEFF1;
+  font-size: 28px;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape .content,
+#app #wrapper-bloodline .descendant.orientation-landscape .content,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape .content {
+  display: inline-block;
+  height: auto;
+  width: 150px;
+  max-width: 150px;
+  -webkit-border-radius: 0 7px 7px 0;
+  border-radius: 0 7px 7px 0;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape .content h4.person-name,
+#app #wrapper-bloodline .descendant.orientation-landscape .content h4.person-name,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape .content h4.person-name {
+  display: block;
+  padding-top: 16.8px;
+  padding-bottom: 7px;
+  padding-left: 16.8px;
+  padding-right: 16.8px;
+  text-align: left;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape .content h6.lifespan,
+#app #wrapper-bloodline .descendant.orientation-landscape .content h6.lifespan,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape .content h6.lifespan {
+  text-align: left;
+  padding-top: 0px;
+  padding-bottom: 3.5px;
+  padding-left: 16.8px;
+  padding-right: 16.8px;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape .content .actions,
+#app #wrapper-bloodline .descendant.orientation-landscape .content .actions,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape .content .actions {
+  text-align: left;
+  top: 100%;
+  left: 0;
+  margin-left: -18.2px;
+}
+#app #wrapper-bloodline .ancestor.orientation-landscape .content .actions a,
+#app #wrapper-bloodline .descendant.orientation-landscape .content .actions a,
+#app #wrapper-bloodline .descendant .spouse.orientation-landscape .content .actions a {
+  display: inline-block;
+  padding-top: 3.5px;
+  padding-bottom: 0px;
+  padding-left: 10.92px;
+  padding-right: 7px;
+}
+
+/*# sourceMappingURL=app.css.map */

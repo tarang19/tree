@@ -1,0 +1,37 @@
+// generic base
+$base: 14px;
+
+//
+// colors
+
+$clr-dark: #263238;
+$clr-light: #ECEFF1;
+
+$clr-male: #5B2A86;
+$clr-female: #F46036;
+
+$clr-accent: #EF233C;
+
+//
+// fonts
+
+$font: 'Roboto Condensed', sans-serif;
+$font-regular: 400;
+$font-bold: 700;
+$font-xs: $base * .85;
+$font-s: $base * .95;
+$font-r: $base;
+$font-l: $base * 1.5;
+
+//
+// text
+$lh-xs: 1;
+$lh-s: 1.2;
+$lh-r: 1.8;
+$lh-l: 2.5;
+$lh-xl: 3.5;
+
+
+
+
+
